@@ -104,18 +104,24 @@ const icons = [
 // mostriamo in pagina tutte le icone disponibili come da layout.
 
 
-let containerHtml = document.querySelector('.icons-container');
+let containerHtml = document.querySelector('.icons-content');
 
 
 icons.forEach((icon) => {
 
-    const {name, prefix, family } = icon;
-
-    containerHtml.innerHTML +=`
+    const {name, prefix, family, type } = icon;
+    console.log(icon)
+    
+    containerHtml.innerHTML += `
   
     <div class="icon-card col"> 
        <div class="icon-card-inner">
-          <i class ="${family} ${prefix} ${name}"></i> 
+          <div class="icon ${type}">
+             <i class ="${family} ${prefix}${name}"></i> 
+          </div>
+          <br/>
+          <div class="name">${name}</div>
        </div>
-    </div>`
+    </div>
+    `
 });
