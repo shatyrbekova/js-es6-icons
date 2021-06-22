@@ -109,11 +109,13 @@ let containerHtml = document.querySelector('.icons-container');
 
 icons.forEach((icon) => {
 
-    const {name, prefix,family } = icon;
+    const {name, prefix, family } = icon;
 
     containerHtml.innerHTML +=`
   
     <div class="icon-card col"> 
-       <i class ="${family} ${prefix} ${name}"></i> 
+       <div class="icon-card-inner">
+          <i class ="${family} ${prefix} ${name}"></i> 
+       </div>
     </div>`
 });
