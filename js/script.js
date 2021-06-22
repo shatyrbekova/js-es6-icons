@@ -145,6 +145,7 @@ function listIconsToHTML(filter){
     const iconsFiltered = filterIcons (filter, icons);
 
      let containerHtml = document.querySelector('.icons-content');
+     containerHtml.innerHTML='';
 
     iconsFiltered.forEach((icon) => {
     
@@ -164,6 +165,7 @@ function listIconsToHTML(filter){
         `
     });
 };
+
 listIconsToHTML('all');
 
 const selectElement = document.querySelector('.type-select');
