@@ -104,24 +104,76 @@ const icons = [
 // mostriamo in pagina tutte le icone disponibili come da layout.
 
 
-let containerHtml = document.querySelector('.icons-content');
+// Milestone 2
+// Coloriamo le icone per tipo
 
 
-icons.forEach((icon) => {
 
-    const {name, prefix, family, type } = icon;
-    console.log(icon)
+const iconsFiltred = icons.map ((elements)=>{
+    return elements;
+})
+
+/**
+ * Sono due argomenti della funzione. 
+ * Filtra originalList a seconda sella scelta, prima choice
+ * @param {*} choice  ['all', 'user', 'vegetable', 'animal'] 
+ * @param {*} originalList 
+ */
+
+function filterIcons(choice, originalList){
+
+  return originalList.filter((icon)=>{
+
+        //ritornaimo TRUE solo se corrisponde al filtro.
+        if(choice === 'all'){
+            return true;
+        }
+        if (coice === icon.type){
+            return true;
+        }
+
+        //se non è riuescito ad attivare
+        //gli altri return, allora
+        return false;
+    })
+
+};
+
+
+function listIconsToHTML(filter){
+
+    const iconsFiltered = filterIcons (filter, icons);
+
+     let containerHtml = document.querySelector('.icons-content');
+
+    iconsFiltered.forEach((icon) => {
     
-    containerHtml.innerHTML += `
-  
-    <div class="icon-card col"> 
-       <div class="icon-card-inner">
-          <div class="icon ${type}">
-             <i class ="${family} ${prefix}${name}"></i> 
-          </div>
-          <br/>
-          <div class="name">${name}</div>
-       </div>
-    </div>
-    `
+        const { name, prefix, family, type } = icon;
+        console.log(icon)
+        
+        containerHtml.innerHTML += `
+      
+        <div class="icon-card col"> 
+           <div class="icon-card-inner">
+              <div class="icon ${type}">
+                 <i class ="${family} ${prefix}${name}"></i> 
+              </div>
+              <div class="name">${name}</div>
+           </div>
+        </div>
+        `
+    });
+};
+listIconsToHTML('all');
+
+const selectElement = document.querySelector('.type-select');
+
+selectElement.addEventListener('change', (event)=>{
+    //event è la descrizione dell'evento e contiene 
+    // in event.target.value il valore della select selezionata.
+    listIconsToHTML(event.target.value);
 });
+
+
+// Milestone 3
+// Creiamo una select con i tipi di icone e usiamola per filtrare le icone
